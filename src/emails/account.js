@@ -1,7 +1,7 @@
 const Mailjet = require('node-mailjet');
 const mailjet = Mailjet.apiConnect(
-    'f0188f147066bfdcbab512946a8a982c',
-    '926e40c3824d63e4a4be80f0d0d75928',
+    process.env.PUBLIC_KEY,
+    process.env.PRIVATE_KEY,
 );
  
 // const request = mailjet
