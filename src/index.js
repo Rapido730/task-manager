@@ -3,9 +3,11 @@ require('./db/mongoose')   // we dont require anything this is just to run mongo
 
 const User = require('./model/user')
 const Task = require('./model/task')
+const Note = require('./model/notes')
 
 const UserRouter = require('./routers/user')
 const TaskRouter = require('./routers/task')
+const NoteRouter = require('./routers/note')
 const { findById } = require('./model/user')
 
 const app = express()              //   creating new app
@@ -20,6 +22,7 @@ const port = process.env.PORT   // creating a port
 app.use(express.json())              // state that json will be used to transfer data
 app.use(UserRouter)
 app.use(TaskRouter)
+app.use(NoteRouter)
 
 const multer = require('multer')
 // const upload = multer({

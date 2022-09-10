@@ -4,6 +4,7 @@ const validator = require('validator')
 const bcrypt = require('bcryptjs')   //  module used to encrypt and varify user password
 const jwt = require('jsonwebtoken')   //  to generate user authentication password
 const Task = require('./task')
+const Note = require('./notes')
 
 const UserSchema = new mongoose.Schema({
     name :{
@@ -60,6 +61,12 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.virtual('tasks', {
     ref : 'Task',
+    localField : '_id',
+    foreignField : 'author'
+})
+
+UserSchema.virtual('notes', {
+    ref : 'Note',
     localField : '_id',
     foreignField : 'author'
 })
@@ -122,6 +129,7 @@ UserSchema.pre('save', async function(next) {
 UserSchema.pre('remove', async function (next) {
     const user = this
     await Task.deleteMany({'author' : user._id})
+    await Note.deleteMany({'author' : user._id})
     next()
 })
 

@@ -117,7 +117,7 @@ router.patch('/users/update', auth,async (req,res) => {
     }
 })
 
-router.delete('/users/delete', auth , async (req,res) => {
+router.delete('/users', auth , async (req,res) => {
    try{
        byeMail(req.user.email,req.user.name)
        await req.user.delete()

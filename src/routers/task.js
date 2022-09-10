@@ -1,11 +1,12 @@
 const express = require('express')
 const Task = require('../model/task')
+// const Note = require('../model/note')
 const auth = require('../middleware/auth')
 const { query } = require('express')
 const router = new express.Router()
 
 
-router.post('/tasks', auth,async (req, res) => {
+router.post('/tasks/create', auth,async (req, res) => {
 
 
     // const task = new Task(req.body)
@@ -29,7 +30,7 @@ router.post('/tasks', auth,async (req, res) => {
 // skip =0 means first page and skip=1 means second page
 // GET /tasks?sortBy=createdAt:desc or asc   // will sort tasks by created time and in descending order
 
-router.get('/tasks', auth ,async (req,res) => {
+router.get('/tasks/readAll', auth ,async (req,res) => {
    const match = {}
    const sort = {}
     // console.log(parseInt(req.query.limit))
@@ -63,16 +64,16 @@ router.get('/tasks', auth ,async (req,res) => {
 })
 
 
-router.get('/tasks/:id', auth, async (req,res) => {
-    const _id = req.params.id
+router.get('/tasks/find/:description', auth, async (req,res) => {
+    const description = req.params.description
     // console.log(req.params)
    try{
     //    const task = await Task.findById(_id)
         // console.log(req.user._id)
-        const task = await Task.findOne({_id , 'author' : req.user._id})     
+        const task = await Task.findOne({'description':description , 'author' : req.user._id})     
     if(!task)
        {
-           res.status(404).send('not found')
+           return res.status(404).send('not found')
        }
        res.status(200).send(task)
    }
@@ -83,8 +84,8 @@ router.get('/tasks/:id', auth, async (req,res) => {
 
 })
 
-router.patch('/tasks/:id', auth ,async (req,res) => {
-    const _id = req.params.id
+router.patch('/tasks/update/:description', auth ,async (req,res) => {
+    const description = req.params.description
 
     const updates = Object.keys(req.body)    // all attribute which are in http request
     const allowedUpdate = ['description','completed']          // attribute which are described in model 
@@ -102,7 +103,7 @@ router.patch('/tasks/:id', auth ,async (req,res) => {
         // new :true returns document after update and run validators 
         // provide validation check on data updated
 
-        const task = await Task.findOne({_id,'author' : req.user._id})
+        const task = await Task.findOne({'description':description , 'author' : req.user._id}) 
         
         
         if(!task)
@@ -125,14 +126,14 @@ router.patch('/tasks/:id', auth ,async (req,res) => {
 
 })
 
-router.delete('/tasks/:id', auth, async (req,res) => {
-    const _id = req.params.id
+router.delete('/tasks/delete/:description', auth, async (req,res) => {
+    const _description = req.params.description
 
     try{
-        const task = await Task.findOneAndDelete({_id,'author': req.user._id})
+        const task = await Task.findOneAndDelete({'description':_description,'author': req.user._id})
         if(!task)
         {
-            res.status(404).send('!not found')
+           return res.status(404).send('!not found')
         }
         
         res.status(200).send({task,operation : '!Task Deleted'})
