@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 // const validator = require ('validator')
 
 const url = process.env.DB_URL;
+console.log(url);
 mongoose.connect(url, {
   //  connecting to database
   useNewUrlParser: true,
