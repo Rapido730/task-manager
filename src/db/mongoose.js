@@ -116,9 +116,3 @@ mongoose.connect(url, {
 //     description : '     practice dsa problems!',
 //     // completed : false
 // })
-
-// task1.save().then(()=>{
-//     console.log(task1)
-// }).catch((error)=> {
-//     console.log(error)
-// })
