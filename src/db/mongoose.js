@@ -1,13 +1,14 @@
-const mongoose  =  require ('mongoose')
+require("dotenv").config();
+
+const mongoose = require("mongoose");
 // const validator = require ('validator')
 
-
 const url = process.env.DB_URL;
-mongoose.connect(url, {    //  connecting to database
-    useNewUrlParser: true 
-    // useCreateIndex : true
-})
-
+mongoose.connect(url, {
+  //  connecting to database
+  useNewUrlParser: true,
+  // useCreateIndex : true
+});
 
 // ------------  practice
 
@@ -28,7 +29,7 @@ mongoose.connect(url, {    //  connecting to database
 //             }
 //         }
 //     },
-    
+
 // })
 
 // const me  = new user({
@@ -47,7 +48,7 @@ mongoose.connect(url, {    //  connecting to database
 //     name :{
 //         type :String,
 //         required : true,
-//         trim : true 
+//         trim : true
 //     },
 //     email : {
 //         type : String,
@@ -59,7 +60,7 @@ mongoose.connect(url, {    //  connecting to database
 //                 throw new Error('Email is invalid!')
 //             }
 //         }
-//     },    
+//     },
 //     age : {
 //        type: Number,
 //        default : 0,
@@ -103,12 +104,12 @@ mongoose.connect(url, {    //  connecting to database
 //     description : {
 //        type : String,
 //        required : true,
-//        trim :true    
+//        trim :true
 //     },
 //     completed :{
 //      type : Boolean,
 //      default :false
-//     }    
+//     }
 // })
 
 // const task1 = new Task({
