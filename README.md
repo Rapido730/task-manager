@@ -5,7 +5,7 @@
 * upload your avatar.
 
 ## how to connect to server
-* [https://rapido-task-manager.herokuapp.com](https://rapido-task-manager.herokuapp.com) url of server.
+* [https://rapido-task-manager.herokuapp.com](https://task-manager-zel7.onrender.com) url of server.
 * At present we are operating it through [postman web app](https://web.postman.co/).
 
 ## User signup and login
