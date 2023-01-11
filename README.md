@@ -1,20 +1,8 @@
 # task manager
 
-* A backend database server in which you can create your account , login and logout.
-* Users can create , update and delete notes/tasks.
-* upload your avatar.
+- [https://github.com/Rapido730/frontend-task-manager](GitHub Repository link for frontend application)
+- [https://task-manager-zel7.onrender.com](https://task-manager-zel7.onrender.com) url of server.
 
-## how to connect to server
-* [https://task-manager-zel7.onrender.com](https://task-manager-zel7.onrender.com) url of server.
-* At present we are operating it through [postman web app](https://web.postman.co/).
-
-## User signup and login
-* create account
-![](https://i.imgur.com/Vxcyc0j.png)
-
-![](https://i.imgur.com/LybqVNa.png)
-
-* login account
-
-![](https://i.imgur.com/eRxjwFf.png)
-![](https://i.imgur.com/JbWDu5Q.png)
+- A backend database server in which you can create your account , login and logout.
+- Users can create , update and delete notes/tasks.
+- upload your avatar.
